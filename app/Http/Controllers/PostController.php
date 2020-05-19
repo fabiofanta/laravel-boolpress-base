@@ -14,6 +14,6 @@ class PostController extends Controller
 
     public function published() {
 		$postsPublished = Post::where('published', '1')->get();
-		return view('posts.index',compact('postsPublished'));
+		return view('posts.published',compact('postsPublished'));
 	}
 }
