@@ -12,7 +12,7 @@ class PostController extends Controller
 		return view('posts.index',compact('posts'));
 	}
 
-    public function published() {
+    public function indexPublished() {
 		$postsPublished = Post::where('published', '1')->get();
 		return view('posts.published',compact('postsPublished'));
 	}
