@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -49,10 +50,17 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request ->all();
+        $now = Carbon::now()->format('Y-m-d-H-i-s');
         $data['slug'] =  Str::slug($data['title'],'-');
+        
         $post = new Post;
         $post->fill($data);
         $saved = $post->save();
+
+        $validator = Validator::make($data, [
+            'title' => 'required|string|max:150';
+
+        ]);
 
         if(!$saved) {
             dd('errore di salvataggio');
