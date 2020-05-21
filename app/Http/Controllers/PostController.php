@@ -58,7 +58,7 @@ class PostController extends Controller
         $saved = $post->save();
 
         $validator = Validator::make($data, [
-            'title' => 'required|string|max:150';
+            'title' => 'required|string|max:150'
 
         ]);
 
