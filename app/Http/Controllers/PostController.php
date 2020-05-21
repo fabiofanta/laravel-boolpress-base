@@ -52,7 +52,7 @@ class PostController extends Controller
         $data = $request ->all();
         $now = Carbon::now()->format('Y-m-d-H-i-s');
         $data['slug'] =  Str::slug($data['title'],'-');
-        
+
         $post = new Post;
         $post->fill($data);
         $saved = $post->save();
@@ -77,7 +77,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::$find(id);
+        $post = Post::find($id);
         if(empty($post)){
             abort('404');
         }
