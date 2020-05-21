@@ -29,8 +29,10 @@
 				<input type="text" name="img" value="">
 			</div>
 			<div class="">
+				<label for="not-published">Non Pubblicato</label>
+				<input type="radio" id="not-published" name="published" value="0">
 				<label for="published">Pubblicato</label>
-				<input type="text" name="published" value="">
+				<input type="radio" id="published" name="published" value="1">
 			</div>
 		</form>
 
