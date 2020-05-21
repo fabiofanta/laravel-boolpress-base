@@ -13,8 +13,8 @@
 				<input type="text" name="title" value="">
 			</div>
 			<div class="">
-				<label for="text">Testo</label>
-				<input type="text" name="text" value="">
+				<label for="body">Testo</label>
+				<textarea name="body"> </textarea>
 			</div>
 			<div class="">
 				<label for="author">Autore</label>
@@ -34,6 +34,7 @@
 				<label for="published">Pubblicato</label>
 				<input type="radio" id="published" name="published" value="1">
 			</div>
+			<input type="submit" value="Salva">
 		</form>
 
 	</body>

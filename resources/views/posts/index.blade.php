@@ -16,6 +16,9 @@
 				<td>{{$post->title}}</td>
 				<td>{{$post->body}}</td>
 				<td>{{$post->author}}</td>
+				<td><a href="#">Visualizza</a></td>
+				<td><a href="#">Modifica</a></td>
+				<td><a href="#">Elimina</a></td>
 			</tr>
 			@endforeach
 		</table>
