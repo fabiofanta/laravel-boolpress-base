@@ -58,10 +58,10 @@ class PostController extends Controller
         $post->fill($data);
         $saved = $post->save();
 
-        $validator = Validator::make($data, [
-            'title' => 'required|string|max:150'
-
-        ]);
+        // $validator = Validator::make($data, [
+        //     'title' => 'required|string|max:150'
+        //
+        // ]);
 
         if(!$saved) {
             dd('errore di salvataggio');
@@ -82,7 +82,7 @@ class PostController extends Controller
         if(empty($post)){
             abort('404');
         }
-        return view('posts.show',compact($post));
+        return view('posts.show',compact('post'));
     }
 
     /**
