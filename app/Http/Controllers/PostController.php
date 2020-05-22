@@ -88,12 +88,16 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        if(empty($post)) {
+           abort('404');
+       }
+
+       return view('posts.edit', compact('post'));
     }
 
     /**
@@ -105,7 +109,19 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request ->all();
+        $now = Carbon::now()->format('Y-m-d-H-i-s');
+        $data['slug'] =  Str::slug($data['title'],'-');
+
+        $post = new Post;
+        $post->fill($data);
+        $updated = $post->update();
+
+        if(!$updated) {
+            dd('errore di salvataggio');
+        }
+
+        return redirect() ->route('posts.index');
     }
 
     /**
@@ -116,6 +132,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->route('posts.index');
+
     }
 }

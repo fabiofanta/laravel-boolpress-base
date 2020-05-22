@@ -16,9 +16,13 @@
 				<td>{{$post->title}}</td>
 				<td>{{$post->body}}</td>
 				<td>{{$post->author}}</td>
-				<td><a href="#">Visualizza</a></td>
-				<td><a href="#">Modifica</a></td>
-				<td><a href="#">Elimina</a></td>
+				<td><a href="{{route('posts.show',$post->id)}}">Visualizza</a></td>
+				<td><a href="{{route('posts.edit',$post->id)}}">Modifica</a></td>
+				<td><form action="{{route('posts.destroy', $post->id)}}" method="POST">
+                  @method('DELETE')
+                  @csrf
+                  <button type="submit">Elimina</button>
+                </form></td>
 			</tr>
 			@endforeach
 		</table>
