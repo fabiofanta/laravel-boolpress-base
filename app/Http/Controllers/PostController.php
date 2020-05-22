@@ -109,11 +109,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $post = Post::find($id);
         $data = $request ->all();
         $now = Carbon::now()->format('Y-m-d-H-i-s');
         $data['slug'] =  Str::slug($data['title'],'-');
 
-        $post = new Post;
         $post->fill($data);
         $updated = $post->update();
 
@@ -121,7 +121,7 @@ class PostController extends Controller
             dd('errore di salvataggio');
         }
 
-        return redirect() ->route('posts.index');
+        return redirect() ->route('posts.show',$post->id);
     }
 
     /**
