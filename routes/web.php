@@ -18,13 +18,6 @@ Route::get('/', function () {
 });
 
 
-
-Route::get('/posts', 'PostController@index')->name('posts.index');
-
-Route::get('/posts/published', 'PostController@indexPublished')->name('posts.published');
-
-Route::resource('posts','PostController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -35,4 +28,12 @@ Route::prefix('admin')
 ->name('admin.')
 ->group(function () {
 	Route::resource('users','UserController');
+});
+
+Route::prefix('')
+->namespace('Guest')
+->name('guest.')
+->group(function () {
+	Route::resource('posts','PostController');
+	Route::get('/posts/published', 'PostController@indexPublished')->name('posts.published');
 });

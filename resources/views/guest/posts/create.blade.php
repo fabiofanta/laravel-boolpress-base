@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<form action="{{route('posts.store')}}" method="post">
+					<form action="{{route('guest.posts.store')}}" method="post">
 						@csrf
 						@method('POST')
 						<div class="form-group">

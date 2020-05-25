@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -18,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-		return view('posts.index',compact('posts'));
+		return view('guest.posts.index',compact('posts'));
     }
 
     /**
@@ -29,7 +30,8 @@ class PostController extends Controller
 
     public function indexPublished() {
 		$postsPublished = Post::where('published', '1')->get();
-		return view('posts.published',compact('postsPublished'));
+        
+		return view('guest.posts.published',compact('postsPublished'));
 	}
 
     /**
@@ -39,7 +41,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('guest.posts.create');
     }
 
     /**
@@ -67,7 +69,7 @@ class PostController extends Controller
             dd('errore di salvataggio');
         }
 
-        return redirect() ->route('posts.show',$post->id);
+        return redirect() ->route('guest.posts.show',$post->id);
     }
 
     /**
@@ -82,7 +84,7 @@ class PostController extends Controller
         if(empty($post)){
             abort('404');
         }
-        return view('posts.show',compact('post'));
+        return view('guest.posts.show',compact('post'));
     }
 
     /**
@@ -97,7 +99,7 @@ class PostController extends Controller
            abort('404');
        }
 
-       return view('posts.edit', compact('post'));
+       return view('guest.posts.edit', compact('post'));
     }
 
     /**
@@ -121,7 +123,7 @@ class PostController extends Controller
             dd('errore di salvataggio');
         }
 
-        return redirect() ->route('posts.show',$post->id);
+        return redirect() ->route('guest.posts.show',$post->id);
     }
 
     /**
@@ -135,7 +137,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('guest.posts.index');
 
     }
 }

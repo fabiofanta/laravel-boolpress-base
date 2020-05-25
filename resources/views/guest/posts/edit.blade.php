@@ -5,7 +5,7 @@
 		<title>edit</title>
 	</head>
 	<body>
-		<form action="{{route('posts.update',$post->id)}}" method="POST">
+		<form action="{{route('guest.posts.update',$post->id)}}" method="POST">
 			@csrf
 			@method('PUT')
 			<div class="">

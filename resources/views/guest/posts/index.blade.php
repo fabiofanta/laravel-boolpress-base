@@ -20,9 +20,9 @@
 							<td>{{$post->title}}</td>
 							<td>{{$post->body}}</td>
 							<td>{{$post->author}}</td>
-							<td><a href="{{route('posts.show',$post->id)}}" class="btn btn-primary">Visualizza</a></td>
-							<td><a href="{{route('posts.edit',$post->id)}}" class="btn btn-secondary">Modifica</a></td>
-							<td><form action="{{route('posts.destroy', $post->id)}}" method="POST">
+							<td><a href="{{route('guest.posts.show',$post->id)}}" class="btn btn-primary">Visualizza</a></td>
+							<td><a href="{{route('guest.posts.edit',$post->id)}}" class="btn btn-secondary">Modifica</a></td>
+							<td><form action="{{route('guest.posts.destroy', $post->id)}}" method="POST">
 			                  @method('DELETE')
 			                  @csrf
 			                  <button type="submit" class="btn btn-danger">Elimina</button>
