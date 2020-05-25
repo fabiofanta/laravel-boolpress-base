@@ -20,8 +20,12 @@
 								<td>{{$user->email}}</td>
 								<td><a href="{{route('admin.users.show',$user->id)}}" class="btn btn-primary">Visualizza</a></td>
 								<td><a href="{{route('admin.users.edit',$user->id)}}" class="btn btn-secondary">Modifica</a></td>
-								<td><a
-								<td><a href="{{route('admin.users.destroy',$user->id)}}" class="btn btn-danger">Elimina</a></td>
+								<td><form class="" action="{{route('admin.users.destroy',$user->id)}}" method="post">
+									@method('DELETE')
+									@csrf
+									<button class="btn btn-danger" type="submit" name="button">Elimina</button>
+								</form></td>
+
 							</tr>
 						</tbody>
 					@endforeach
