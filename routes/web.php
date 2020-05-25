@@ -34,6 +34,6 @@ Route::prefix('')
 ->namespace('Guest')
 ->name('guest.')
 ->group(function () {
+    Route::get('/posts/published', 'PostController@indexPublished')->name('posts.published');
 	Route::resource('posts','PostController');
-	Route::get('/posts/published', 'PostController@indexPublished')->name('posts.published');
 });
