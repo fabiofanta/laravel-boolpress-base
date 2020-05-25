@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 
@@ -24,3 +24,7 @@ Route::get('/posts', 'PostController@index')->name('posts.index');
 Route::get('/posts/published', 'PostController@indexPublished')->name('posts.published');
 
 Route::resource('posts','PostController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
